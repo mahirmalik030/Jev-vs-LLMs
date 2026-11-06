@@ -1,311 +1,327 @@
-Jev vs LLMs: Comparative Analysis for Phishing Email Detection
 
-This repository contains the dataset, Python implementation, and supporting research materials for a comparative study of Jev 1.13 and Large Language Models (LLMs) for phishing email detection. The study examines classification performance, probability calibration, response time, token consumption, and API cost.
+# Jev vs LLMs – Comparative Analysis for Phishing Email Detection
 
-The LLM experiments use the OpenRouter API to send email classification requests to the selected language model.
+This repository contains the Python implementation and dataset used in a comparative research study of Jev 1.13 and Large Language Models (LLMs) for phishing email detection. The research evaluates classification performance, probability calibration, inference latency, token consumption, and API costs.
 
-About
+The LLM experiments use the OpenRouter API to access different language models through a common API interface.
 
-Phishing emails attempt to deceive recipients into sharing information or taking unsafe actions. This research compares AI-based approaches for identifying phishing and legitimate emails.
+## About
 
-The project evaluates models using classification metrics, calibration metrics, and efficiency measurements. The same dataset and evaluation approach should be used when comparing model results.
+Phishing emails are a common cybersecurity threat used to deceive users and obtain sensitive information. This research explores the effectiveness of Jev and LLM-based approaches in identifying phishing and legitimate emails.
 
-Models Evaluated
+The project compares different AI models using classification metrics, calibration metrics, and computational efficiency measurements.
 
-The research considers the following models:
+## Models Evaluated
 
-Jev 1.13
+The research evaluates the following models:
 
-Gemini 3.5 Flash-Lite
+1. Jev 1.13
+2. Gemini 3.5 Flash-Lite
+3. NVIDIA Nemotron 3 Ultra
+4. Meta Llama 4 Maverick
 
-NVIDIA Nemotron 3 Ultra
+## Repository Contents
 
-Meta Llama 4 Maverick
+The repository contains the following main files.
 
-Note: The supplied Python script is configured to call one OpenRouter model at a time. To evaluate another OpenRouter model, change the model identifier in the script and run the experiment again. Jev must be run using the Jev implementation and procedure used in the research; the OpenRouter script does not execute Jev.
+### 1. Python Codebase
 
-Repository Contents
+This file contains the Python implementation used for email classification and model evaluation.
 
-The project folder contains the following main files:
+### 2. Dataset
 
-phishing_metrics_evaluation.py — Python script that sends email records to the configured OpenRouter model, records responses and usage information, and calculates evaluation metrics.
+This file contains the labelled email dataset used in the experiments. It includes phishing and legitimate email samples.
 
-phishing_email_detection_2026_dataset(1).csv — labelled email dataset used by the script.
+### 3. Evaluation Metrics
 
-Keep the Python script and CSV dataset in the same folder unless you update the dataset path in the script.
+The evaluation process includes classification performance, probability calibration, inference latency, token consumption, and API cost.
 
-Tools and Libraries
+## Technologies and Tools Used
 
-Python — programming language used for the implementation.
+- **Python:** Programming language used for implementation.
+- **Visual Studio Code:** Code editor used to develop and run the project.
+- **Pandas:** Used to read and process the CSV dataset.
+- **Requests:** Used to send requests to the OpenRouter API.
+- **Scikit-learn:** Used to calculate classification metrics.
+- **OpenRouter API:** Used to access the selected Large Language Models.
 
-Visual Studio Code (VS Code) — code editor used to open and run the project.
+# Evaluation Metrics
 
-Pandas — reads and processes the CSV dataset.
+The research evaluates the models using the following metrics.
 
-Requests — sends HTTP requests to the OpenRouter API.
+### 1. Classification Performance
 
-Scikit-learn — calculates accuracy, precision, recall, and F1-score.
+- **Accuracy:** Measures the percentage of correct predictions.
+- **Precision:** Measures how many emails predicted as phishing were actually phishing.
+- **Recall:** Measures how many actual phishing emails were correctly identified.
+- **F1-Score:** Measures the balance between precision and recall.
 
-OpenRouter API — provides access to the selected LLMs through a common API.
+### 2. Probability Calibration
 
-Evaluation Metrics
+- **Brier Score:** Measures the difference between predicted probabilities and actual outcomes. Lower values indicate better calibration.
+- **Expected Calibration Error (ECE):** Measures the difference between predicted confidence and actual accuracy across confidence groups. Lower values indicate better calibration.
 
-1. Classification Performance
+### 3. Computational Efficiency
 
-Accuracy: Percentage of evaluated emails classified correctly.
+- **Inference Latency:** Measures the time taken to receive a model response.
+- **Token Consumption:** Measures the input, output, and total tokens used.
+- **API Cost:** Measures the API cost reported by OpenRouter when available.
 
-Precision: Of the emails predicted as phishing, the proportion that were actually phishing.
+# Initial Configurations
 
-Recall: Of the actual phishing emails, the proportion correctly identified.
+To set up and run this project, you will require:
 
-F1-score: Harmonic mean of precision and recall.
+- A computer running Windows, macOS, or Linux.
+- Python installed on your computer.
+- Visual Studio Code.
+- An active internet connection.
+- An OpenRouter API key.
+- The research dataset included in this repository.
 
-2. Probability Calibration
+## Setting Up the Python Environment
 
-Brier Score: Measures the squared difference between predicted phishing probabilities and the actual labels. Lower values indicate better probability accuracy.
+### Step 1: Install Python
 
-Expected Calibration Error (ECE): Compares average predicted confidence with observed accuracy across confidence bins. Lower values indicate better calibration.
-
-3. Efficiency and Cost
-
-Inference latency: Time taken for an API request to return a model response.
-
-Token consumption: Number of input, output, and total tokens reported by the API.
-
-API cost: Cost reported in the API response, when available.
-
-Initial Configurations
-
-You need the following to run the supplied LLM evaluation script:
-
-A computer running Windows, macOS, or Linux.
-
-Python installed.
-
-Visual Studio Code or another code editor.
-
-An internet connection.
-
-An OpenRouter account and an API key.
-
-The CSV dataset included with the project.
-
-The script sends one API request for each dataset row. Running the complete dataset may take time and may use API credits. Check the selected model's availability, rate limits, and pricing on OpenRouter before starting.
-
-Setup and Running Instructions
-
-Follow the steps below in order. The commands are shown for a typical Windows setup. If python is not recognized on your computer, try py instead.
-
-Step 1: Install Python
-
-Download and install Python from:
+Download Python from:
 
 https://www.python.org/downloads/
 
-On Windows, select Add Python to PATH during installation if the installer offers that option.
+During installation on Windows, select **Add Python to PATH**.
 
-Open Command Prompt or the VS Code terminal and check the installation:
+Verify the installation by opening Command Prompt or the VS Code terminal and running:
 
+```bash
 python --version
+```
 
-Step 2: Install Visual Studio Code
+### Step 2: Install Visual Studio Code
 
-Download and install Visual Studio Code:
+Download Visual Studio Code from:
 
 https://code.visualstudio.com/
 
-Open VS Code after installation.
+Install and open the application.
 
-Step 3: Download the Repository
+### Step 3: Download the Repository
 
-On the GitHub repository page:
+Open the GitHub repository.
 
-Select the green **Code** button.
+1. Click the green **Code** button.
+2. Select **Download ZIP**.
+3. Extract the downloaded ZIP file to your computer.
 
-Select **Download ZIP**.
+Alternatively, use Git:
 
-Extract the ZIP file to a folder on your computer.
-
-You can also use Git:
-
+```bash
 git clone YOUR_GITHUB_REPOSITORY_URL
+```
 
-Step 4: Open the Project Folder
+### Step 4: Open the Project in Visual Studio Code
 
-In VS Code:
+Open Visual Studio Code.
 
-Select **File**.
+1. Click **File**.
+2. Select **Open Folder**.
+3. Select the downloaded project folder.
+4. Make sure the Python file and CSV dataset are present.
 
-Select **Open Folder**.
+Your project folder should look like this:
 
-Choose the folder containing the downloaded project.
-
-Confirm that the Python script and CSV dataset are in the same folder.
-
-The folder should look similar to this:
-
+```text
 Jev-vs-LLMs/
+│
 ├── phishing_metrics_evaluation.py
+│
 └── phishing_email_detection_2026_dataset(1).csv
+```
 
-The filenames must match the names configured in the Python script. If you rename either file, update the corresponding filename in the script.
+Keep both files in the same folder.
 
-Step 5: Install the Required Python Libraries
+### Step 5: Install Required Python Libraries
 
-In VS Code, open the terminal:
+Open the VS Code terminal:
 
-Select **Terminal** from the top menu.
+1. Click **Terminal**.
+2. Select **New Terminal**.
+3. Run the following command:
 
-Select **New Terminal**.
-
-Run:
-
+```bash
 python -m pip install pandas requests scikit-learn
+```
 
-Wait for the installation to finish. These are the external Python libraries imported by the supplied script. The script also uses modules included with Python.
+Wait until all required libraries are installed.
 
-Step 6: Create an OpenRouter API Key
+### Step 6: Get an OpenRouter API Key
 
-The LLM script uses OpenRouter to send requests to the selected model.
+The LLM experiments use OpenRouter to communicate with the selected language models.
 
-Visit https://openrouter.ai/
+Follow these steps:
 
-Sign in or create an account.
+1. Visit https://openrouter.ai/
+2. Create an account or sign in.
+3. Open the API Keys section:
 
-Open https://openrouter.ai/keys
+https://openrouter.ai/keys
 
-Create an API key.
+4. Create a new API key.
+5. Copy your API key and keep it private.
 
-Copy the key and keep it private.
+OpenRouter provides access to different language models through a common API.
 
-Some models may require credits, and free models may have usage limits. Check the pricing and availability of the model you plan to use.
+**Note:** Some models require API credits. Free models may also have request limits.
 
-Step 7: Add Your API Key to the Local Python Script
+### Step 7: Configure the OpenRouter API Key
 
-Open phishing_metrics_evaluation.py in VS Code.
+Open `phishing_metrics_evaluation.py` in Visual Studio Code.
 
-Find the API key setting near the top of the file:
+Find the API key configuration near the beginning of the code.
 
+Replace the placeholder with your own API key:
+
+```python
 API_KEY = "YOUR_OPENROUTER_API_KEY"
+```
 
-For your local run, replace the placeholder with your own key:
+Save the Python file.
 
-API_KEY = "paste_your_openrouter_key_here"
+**Important:** Never upload your actual API key to GitHub. Keep your API credentials private.
 
-Save the file.
+### Step 8: Configure the Model
 
-Security: Do not publish a real API key on GitHub. Before uploading the code, replace your personal key with the placeholder YOUR_OPENROUTER_API_KEY. If a real key has already been published, revoke it and create a new one.
+The selected model is configured in the Python script.
 
-Step 8: Check the Model and Dataset Settings
+For example:
 
-Near the top of the Python script, check these settings:
-
+```python
 MODEL = "nvidia/nemotron-3-ultra-550b-a55b:free"
+```
 
+To evaluate another LLM, change the model identifier to the exact identifier available on OpenRouter.
+
+The same API key can be used for different supported models.
+
+Also check the dataset and output filenames in the script:
+
+```python
 INPUT_FILE = "phishing_email_detection_2026_dataset(1).csv"
 
 OUTPUT_FILE = "llm_1500_results.csv"
+```
 
-MODEL identifies the OpenRouter model to call. Use a model identifier exactly as listed by OpenRouter.
+Make sure the input filename matches your actual dataset filename.
 
-INPUT_FILE must match the name of your CSV dataset.
+### Step 9: Run the Python Code
 
-OUTPUT_FILE is the name of the CSV file where the script saves its predictions and recorded results.
+After installing the libraries and configuring your API key, open the VS Code terminal.
 
-To test another OpenRouter model, change MODEL and run the script again. Save or rename the previous output file before the next run because the script writes to the same output filename.
+Make sure you are inside the project folder.
 
-Step 9: Run the Python Script
+Run the following command:
 
-Make sure the VS Code terminal is open in the project folder. Run:
-
+```bash
 python phishing_metrics_evaluation.py
+```
 
 The script will:
 
-Read the CSV dataset.
+1. Load the phishing email dataset.
+2. Read the email information and actual labels.
+3. Send email classification requests to the selected LLM through OpenRouter.
+4. Receive the predicted label and confidence score.
+5. Record response time and token consumption.
+6. Record API cost when available.
+7. Calculate the evaluation metrics.
+8. Save the experimental results in a CSV file.
 
-Check that the required dataset columns are present.
+The script also saves interim results after every 50 processed records.
 
-Send each email record to the configured OpenRouter model.
+# Dataset Information
 
-Read the model's predicted label and confidence.
+The research uses a labelled email dataset containing phishing and legitimate email samples.
 
-Record response time, token usage, API cost when provided, and any errors.
+The Python implementation expects the following dataset columns:
 
-Save interim results after every 50 processed records.
+- `email_id`
+- `sender_email`
+- `subject`
+- `has_link`
+- `has_attachment`
+- `urgency_score`
+- `spelling_errors`
+- `email_length_words`
+- `is_phishing`
 
-Calculate the evaluation metrics for successful predictions.
+The `is_phishing` column contains the actual classification labels used to evaluate model predictions.
 
-Save the final per-email results to the output CSV file.
+Make sure the dataset contains the required column names before running the code.
 
-The script prints progress and a final evaluation summary in the terminal.
+Only distribute the dataset if you have permission to share it.
 
-Dataset Format
+# Experimental Results
 
-The supplied script expects the CSV file to contain these column names:
+After running the Python script, the results are saved in:
 
-email_id
-
-sender_email
-
-subject
-
-has_link
-
-has_attachment
-
-urgency_score
-
-spelling_errors
-
-email_length_words
-
-is_phishing
-
-The is_phishing column contains the actual label. The script interprets values such as 1, true, yes, or phishing as phishing; other values are treated as legitimate. Check your dataset labels before running the experiment.
-
-Only share the dataset if you have permission to redistribute it. Do not include private or personally identifying email information unless you have the right to share it.
-
-Output and Results
-
-The script saves per-email predictions and request information to:
-
+```text
 llm_1500_results.csv
+```
 
-The output includes fields such as the email ID, actual label, predicted label, confidence, phishing probability, raw model response, token counts, reported API cost, response time, and error information.
+The output contains information such as:
 
-The terminal summary reports:
+- Email ID
+- Actual label
+- Predicted label
+- Confidence score
+- Phishing probability
+- Model response
+- Input tokens
+- Output tokens
+- Total tokens
+- API cost
+- Response time
+- Error information
 
-Number of dataset rows.
+The final evaluation summary is also displayed in the VS Code terminal.
 
-Number of successful and failed predictions.
+The summary includes classification performance, calibration measurements, execution time, token consumption, and available API cost information.
 
-Accuracy, precision, recall, and F1-score.
+**Note:** Failed API requests are recorded separately and are not included in successful classification metric calculations.
 
-Brier Score and ECE.
+# Running Experiments with Different Models
 
-Total execution time and average latency.
+The same Python implementation can be used to evaluate different OpenRouter-supported LLMs.
 
-Input, output, and total tokens.
+For each experiment:
 
-API cost when the API reports it.
+1. Open the Python script.
+2. Change the `MODEL` identifier.
+3. Keep your OpenRouter API key configured.
+4. Run the Python command again.
+5. Save the previous results file before starting another experiment.
 
-Failed requests are not included in the classification and calibration metrics. Review the error information in the output CSV when requests fail.
+This allows different models to be evaluated using the same dataset and evaluation approach.
 
-Important: The script records API cost only when the OpenRouter response includes a cost value. A displayed cost of zero or “not reported” does not prove that the experiment was free.
+# Troubleshooting
 
-Troubleshooting
+### Python is not recognized
 
-Python is not recognized: Reinstall Python and enable Add Python to PATH, or try py instead of python.
+Make sure Python is installed and added to PATH. Restart the terminal and try again.
 
-A module is missing: Run python -m pip install pandas requests scikit-learn again using the same Python environment.
+### Required library is missing
 
-Dataset file not found: Keep the CSV in the same folder as the script and check that INPUT_FILE matches its exact filename.
+Run:
 
-Missing dataset columns: Check that the CSV column names match the required names listed above.
+```bash
+python -m pip install pandas requests scikit-learn
+```
 
-API authentication error: Check that the API key is correct, active, and entered in the local script.
+### Dataset file not found
 
-Rate limit or server error: Check OpenRouter limits and model availability. The script retries certain temporary errors, but a request can still fail.
+Make sure the CSV dataset and Python script are in the same folder. Check the filename in the code.
 
-No successful predictions: Check the API key, model identifier, internet connection, and error details in the output CSV.
+### OpenRouter API error
+
+Check your API key, internet connection, available credits, and selected model identifier.
+
+### Model request limit exceeded
+
+Check the usage limits and availability of your selected model on OpenRouter.
